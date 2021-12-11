@@ -1,24 +1,18 @@
-# planet-facts
+![Preview](./preview.jpg)
 
-## Project setup
-```
-npm install
-```
+## Le challenge
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Le challenge est de construire ce site de 8 pages en utilisant les datas du [`store.js`](./store.js)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+L'utilisateur devrait être capable de :
 
-### Lints and fixes files
-```
-npm run lint
-```
+- Naviguer entre les différentes pages du site-web
+- Toggle entre les sous-pages "Overview", "Internal Structure" et "Surface Geology"
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Le bonus
+
+N'hésitez pas à ajouter des fonctionnalités sur le site, même si elles sont inutiles dans le contexte, pour vous exercez.
+_Ex : une page login réutilisant le component fait auparavant et une page profil exploitant les fonctions de vue router pour limiter l'accès._
+
+**Bonne chance !** 👾
+

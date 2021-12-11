@@ -1,22 +1,40 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Planet from '../views/Planet.vue'
+import store from '../../store'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/:slug',
+    name: 'Planet',
+    component: Planet,
+    children:[
+      {
+				path: ':slug2',
+        name: 'PlanetInfo',
+        props: true,
+        component: () => import(/* webpackChunkName: "destinationPlanet" */ '../views/PlanetInfo.vue'),
+      }
+    ],
+    //404
+    //On compare par rapport au slug du store et le slug passé en params
+    beforeEnter: (to, from, next) => {
+      let exist= store.planets.find(tech=>tech.slug==to.params.slug)
+      if (exist) {
+        next()
+      } else {
+        next({name: 'NotFound'})
+      }
+    }
   },
+  //404
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/404',
+    alias:'*',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "destinationPlanet" */ '../views/404NotFound.vue')
   }
 ]
 
